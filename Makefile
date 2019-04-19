@@ -6,11 +6,11 @@
 #    By: efrank <efrank@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/18 12:15:56 by efrank         #+#    #+#                 #
-#    Updated: 2019/04/19 16:48:58 by efrank        ########   odam.nl          #
+#    Updated: 2019/04/19 17:03:21 by efrank        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME = fractol
 SRC = src/*.c
 INCLUDES = minilibx_macos
 FLAGS = -Wall -Wextra -Werror

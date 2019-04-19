@@ -6,13 +6,14 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/17 15:31:41 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/19 17:03:32 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "fractol.h"
 
 int		main(void)
 {
+	
 	return (0);
 }
