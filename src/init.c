@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   init.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/19 18:27:52 by efrank        ########   odam.nl         */
+/*   Created: 2019/04/19 17:56:42 by efrank         #+#    #+#                */
+/*   Updated: 2019/04/19 17:57:19 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		main(void)
+t_mlx	init(void)
 {
 	t_mlx mlx;
-	mlx = init();
-	mlx_hook(mlx.window, 2, 1L << 2, &get_key, &mlx);
-	mlx_loop_hook(mlx.init, &draw_image, &mlx);
-	mlx_loop(mlx.init);
-	return (0);
+
+	mlx.init = mlx_init();
+	mlx.window = mlx_new_window(mlx.init, WIDTH, HEIGHT, "fdf");
+	mlx.image = mlx_new_image(mlx.init, WIDTH, HEIGHT);
+	mlx.pixel_addr = mlx_get_data_addr(mlx.image, &(mlx.bits_per_pixel),
+	&(mlx.line_size), &(mlx.endian));
+	return (mlx);
 }

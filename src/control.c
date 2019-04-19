@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   control.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/19 18:27:52 by efrank        ########   odam.nl         */
+/*   Created: 2019/04/19 17:57:26 by efrank         #+#    #+#                */
+/*   Updated: 2019/04/19 17:57:47 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		main(void)
+int		get_key(int key, t_mlx *mlx)
 {
-	t_mlx mlx;
-	mlx = init();
-	mlx_hook(mlx.window, 2, 1L << 2, &get_key, &mlx);
-	mlx_loop_hook(mlx.init, &draw_image, &mlx);
-	mlx_loop(mlx.init);
+	if (key == 53)
+		exit(1);
 	return (0);
 }
