@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/22 17:39:28 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/23 12:42:13 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_mlx {
 	void		*window;
 	void		*image;
 	char		*pixel_addr;
+	double		zoom;
 }				t_mlx;
 
 typedef struct 	s_fractal {
@@ -50,10 +51,11 @@ typedef struct 	s_fractal {
 	double		b_new;
 	double		ca;
 	double		cb;
+	double		zoom;
 }				t_fractal;
 
 t_mlx			init(void);
-t_color			mandelbrot(int x, int y);
+t_color			mandelbrot(t_mlx mlx, int x, int y);
 int				get_key(int key, t_mlx *mlx);
 int				draw_image(t_mlx *mlx);
 void			draw_pixel(t_mlx mlx, int x, int y, t_color color);
