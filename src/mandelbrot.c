@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:13:36 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/23 13:52:57 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/24 17:28:58 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 static void		set_values(t_fractal *fractal, int x, int y, t_mlx mlx)
 {
+	double zoom_offset;
+
 	fractal->a = ft_map((double)x, 0, (double)WIDTH, -2, 2);
 	fractal->b = ft_map((double)y, 0, (double)HEIGHT, -2, 2);
 	fractal->a *= mlx.zoom;
 	fractal->b *= mlx.zoom;
+	if (mlx.zoomToggle)
+	{
+		// printf("%lf\n", mlx.zoom);
+		fractal->a += ft_map(mlx.xPos, 0, (double)WIDTH, -2, 2);
+		fractal->b += ft_map(mlx.yPos, 0, (double)HEIGHT, -2, 2);
+	}
 	fractal->ca = fractal->a;
 	fractal->cb = fractal->b;
 }
@@ -56,7 +64,7 @@ t_color			mandelbrot(t_mlx mlx, int x, int y)
 		fractal.b_new = 2 * fractal.a * fractal.b;
 		fractal.a = fractal.a_new + fractal.ca;
 		fractal.b = fractal.b_new + fractal.cb;
-		if (fabs(fractal.a + fractal.b) > 16)
+		if (fabsl(fractal.a + fractal.b) > 6)
 			break ;
 		n++;
 	}

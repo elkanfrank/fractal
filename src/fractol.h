@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/23 12:42:13 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/24 17:26:47 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH 1080
 # define HEIGHT 960
-# define MAX_ITER 100
+# define MAX_ITER 40
 # define MAX_COLOR 0x0F7173
 # define MIN_COLOR 0xF05D5E
 
@@ -42,20 +42,24 @@ typedef struct	s_mlx {
 	void		*image;
 	char		*pixel_addr;
 	double		zoom;
+	int			zoomToggle;
+	int			xPos;
+	int			yPos;
 }				t_mlx;
 
-typedef struct 	s_fractal {
-	double		a;
-	double		b;
-	double		a_new;
-	double		b_new;
-	double		ca;
-	double		cb;
-	double		zoom;
+typedef struct	s_fractal {
+	long double	a;
+	long double	b;
+	long double	a_new;
+	long double	b_new;
+	long double	ca;
+	long double	cb;
+	long double	zoom;
 }				t_fractal;
 
 t_mlx			init(void);
 t_color			mandelbrot(t_mlx mlx, int x, int y);
 int				get_key(int key, t_mlx *mlx);
+int				mouse_press(int button, int x, int y, t_mlx *mlx);
 int				draw_image(t_mlx *mlx);
 void			draw_pixel(t_mlx mlx, int x, int y, t_color color);

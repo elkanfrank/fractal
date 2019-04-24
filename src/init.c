@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:56:42 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/23 12:41:12 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/24 14:52:19 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ t_mlx	init(void)
 	mlx.window = mlx_new_window(mlx.init, WIDTH, HEIGHT, "fractol");
 	mlx.image = mlx_new_image(mlx.init, WIDTH, HEIGHT);
 	mlx.zoom = 1;
+	mlx.xPos = 0;
+	mlx.yPos = 0;
+	mlx.zoomToggle = 0;
 	mlx.pixel_addr = mlx_get_data_addr(mlx.image, &(mlx.bits_per_pixel),
 	&(mlx.line_size), &(mlx.endian));
 	return (mlx);
