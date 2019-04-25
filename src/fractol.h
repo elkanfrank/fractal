@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/25 14:56:49 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/25 17:18:23 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH 1080
 # define HEIGHT 960
-# define MAX_ITER 50
+# define MAX_ITER 100
 # define MAX_COLOR 0x0F7173
 # define MIN_COLOR 0xF05D5E
 

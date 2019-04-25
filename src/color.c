@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 13:49:18 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/25 15:14:16 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/25 18:00:46 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_color	set_color(int n)
 	}
 	else if (n < MAX_ITER / 2)
 	{
-		color.red = ft_map((double)n, 0, MAX_ITER, 0x10, 0x99);
-		color.green = ft_map((double)n, 0, MAX_ITER, 0x10, 0xF4);
-		color.blue = ft_map((double)n, 0, MAX_ITER, 0x10, 0xB3);
+		color.red = ft_map((double)n, 0, MAX_ITER, 0x23, 0x99);
+		color.green = ft_map((double)n, 0, MAX_ITER, 0x80, 0xF4);
+		color.blue = ft_map((double)n, 0, MAX_ITER, 0xF4, 0xB3);
 	}
 	else
 	{

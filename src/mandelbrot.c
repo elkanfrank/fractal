@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:13:36 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/25 14:37:59 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/25 17:14:07 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_color			mandelbrot(t_mlx mlx, int x, int y)
 		fractal.a_new = (fractal.a * fractal.a) - (fractal.b * fractal.b);
 		fractal.b = 2 * fractal.a * fractal.b + fractal.cb;
 		fractal.a = fractal.a_new + fractal.ca;
-		if (fabsl(fractal.a + fractal.b) > 6)
+		if (fabsl(fractal.a + fractal.b) > 4)
 			break ;
 		n++;
 	}
