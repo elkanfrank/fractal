@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/24 17:26:47 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/25 14:56:49 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define WIDTH 1080
 # define HEIGHT 960
-# define MAX_ITER 40
+# define MAX_ITER 50
 # define MAX_COLOR 0x0F7173
 # define MIN_COLOR 0xF05D5E
 
@@ -59,6 +59,9 @@ typedef struct	s_fractal {
 
 t_mlx			init(void);
 t_color			mandelbrot(t_mlx mlx, int x, int y);
+t_color			julia(t_mlx mlx, int x, int y);
+t_color			set_color(int n);
+t_color			max_color(void);
 int				get_key(int key, t_mlx *mlx);
 int				mouse_press(int button, int x, int y, t_mlx *mlx);
 int				draw_image(t_mlx *mlx);

@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:57:26 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/24 17:23:42 by efrank        ########   odam.nl         */
+/*   Updated: 2019/04/25 14:53:01 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		mouse_press(int button, int x, int y, t_mlx *mlx)
 {
 	mlx->xPos = x;
 	mlx->yPos = y;
+	printf("xPos: %d yPos: %d\n", mlx->xPos, mlx->yPos);
 	if (button == 5)
 	{
 		mlx->zoom += 0.10 * mlx->zoom;
