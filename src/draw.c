@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:56:44 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/25 17:20:25 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/15 13:59:35 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int			draw_image(t_mlx *mlx)
 		x = 0;
 		while (x < WIDTH)
 		{
-			// draw_pixel(*mlx, x, y, mandelbrot(*mlx, x, y));
-			draw_pixel(*mlx, x, y, julia(*mlx, x, y));
+			draw_pixel(*mlx, x, y, mandelbrot(*mlx, x, y));
+			// draw_pixel(*mlx, x, y, julia(*mlx, x, y));
 			x++;
 		}
 		y++;
