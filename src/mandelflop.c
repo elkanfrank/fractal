@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   mandelbrot.c                                       :+:    :+:            */
+/*   mandelflop.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: efrank <efrank@student.codam.nl>             +#+                     */
+/*   By: elkanfrank <elkanfrank@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/22 15:13:36 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/16 16:22:51 by elkanfrank    ########   odam.nl         */
+/*   Created: 2019/05/16 15:14:03 by elkanfrank     #+#    #+#                */
+/*   Updated: 2019/05/16 16:24:01 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		set_values(t_fractal *fractal, int x, int y, t_mlx mlx)
 	fractal->cb = fractal->b;
 }
 
-t_color			mandelbrot(t_mlx mlx, int x, int y)
+t_color			mandelflop(t_mlx mlx, int x, int y)
 {
 	double		n;
 	int			brightness;
@@ -37,12 +37,10 @@ t_color			mandelbrot(t_mlx mlx, int x, int y)
 		fractal.a_new = (fractal.a * fractal.a) - (fractal.b * fractal.b);
 		fractal.b = 2 * fractal.a * fractal.b + fractal.cb;
 		fractal.a = fractal.a_new + fractal.ca;
-		if (fabs(fractal.a + fractal.b) > 2)
+		if (fabsl(fractal.a + fractal.b) > 2)
 			break ;
 		n++;
 	}
-	if (n == MAX_ITER)
-		return (max_color());
-	n = n - log2(log2(fabs(fractal.a * fractal.a + fractal.b * fractal.b))) + 3;
+	n = n - log2(fabs(fractal.a * fractal.a + fractal.b * fractal.b)) + 3; // play with these parameters
 	return (set_color(n));
 }

@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/15 15:54:05 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/16 15:46:24 by elkanfrank    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_color {
 }				t_color;
 
 typedef struct	s_mlx {
+	char 		*type;
 	int			line_size;
 	int			endian;
 	int			bits_per_pixel;
@@ -62,6 +63,7 @@ typedef struct	s_fractal {
 
 t_mlx			init(void);
 t_color			mandelbrot(t_mlx mlx, int x, int y);
+t_color			mandelflop(t_mlx mlx, int x, int y);
 t_color			julia(t_mlx mlx, int x, int y);
 t_color			set_color(double n);
 t_color			max_color(void);
