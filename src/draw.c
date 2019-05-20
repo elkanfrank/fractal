@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:56:44 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/16 15:46:53 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2019/05/20 17:32:16 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,55 @@ void	draw_pixel(t_mlx mlx, int x, int y, t_color color)
 	{
 		i = x * (mlx.bits_per_pixel / 8) + (y * mlx.line_size);
 		mlx.pixel_addr[i] = color.blue;
-		mlx.pixel_addr[++i] = color.green;
-		mlx.pixel_addr[++i] = color.red;
+		i++;
+		mlx.pixel_addr[i] = color.green;
+		i++;
+		mlx.pixel_addr[i] = color.red;
 	}
+}
+
+void		*draw_thread(void *data)
+{
+	t_mlx	*mlx;
+	int		x;
+
+	x = 0;
+	mlx = (t_mlx *)data;
+	while (mlx->start_y < mlx->end_y)
+	{
+		if (mlx->type == MANDEL)
+			draw_pixel(*mlx, x, mlx->start_y, mandelbrot(*mlx, x, mlx->start_y));
+		else if (mlx->type == JULIA)
+			draw_pixel(*mlx, x, mlx->start_y, julia(*mlx, x, mlx->start_y));
+		x++;
+		if (x == WIDTH)
+		{
+			x = 0;
+			mlx->start_y++;
+		}
+	}
+	return (NULL);
 }
 
 int			draw_image(t_mlx *mlx)
 {
-	int y;
-	int x;
+	int			i;
+	t_mlx		mlx_list[THREADS];
+	pthread_t	thread_id[THREADS];
 
-	ft_bzero(mlx->pixel_addr, WIDTH * HEIGHT * (mlx->bits_per_pixel / 8));
-	y = 0;
-	while (y < HEIGHT)
+	i = 0;
+	while (i < THREADS)
 	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			if (ft_strcmp(mlx->type, "mandelbrot") == 0)
-				draw_pixel(*mlx, x, y, mandelbrot(*mlx, x, y));
-			else if (ft_strcmp(mlx->type, "julia") == 0)
-				draw_pixel(*mlx, x, y, julia(*mlx, x, y));
-			else if (ft_strcmp(mlx->type, "mandelflop") == 0)
-				draw_pixel(*mlx, x, y, mandelflop(*mlx, x, y));
-			x++;
-		}
-		y++;
+		ft_memcpy(&mlx_list[i], mlx, sizeof(t_mlx));
+		mlx_list[i].start_y = (HEIGHT / THREADS) * i;
+		mlx_list[i].end_y = (HEIGHT / THREADS) * (i + 1);
+		pthread_create(&thread_id[i], NULL, &draw_thread, &mlx_list[i]);
+		i++;
+	}
+	while (i >= 0)
+	{
+		i--;
+		pthread_join(thread_id[i], NULL);
 	}
 	mlx_put_image_to_window(mlx->init, mlx->window, mlx->image, 0, 0);
 	return (1);

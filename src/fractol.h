@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/16 15:46:24 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2019/05/20 17:43:30 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@
 
 # define WIDTH 1080
 # define HEIGHT 960
-# define MAX_ITER 120
+# define MAX_ITER 80
+# define THREADS 40
 # define MAX_COLOR 0x0F7173
 # define MIN_COLOR 0xF05D5E
+# define MANDEL 0
+# define JULIA 1
+# define LOL 2
 
 typedef unsigned char	t_byte;
 
@@ -35,7 +39,7 @@ typedef struct	s_color {
 }				t_color;
 
 typedef struct	s_mlx {
-	char 		*type;
+	int			type;
 	int			line_size;
 	int			endian;
 	int			bits_per_pixel;
@@ -45,6 +49,8 @@ typedef struct	s_mlx {
 	double		zoom;
 	int			zoom_add;
 	char		*pixel_addr;
+	int			start_y;
+	int			end_y;
 	int			xPos;
 	int			yPos;
 	int			xMove;
@@ -69,5 +75,6 @@ t_color			set_color(double n);
 t_color			max_color(void);
 int				get_key(int key, t_mlx *mlx);
 int				mouse_press(int button, int x, int y, t_mlx *mlx);
+int				mouse_move(int x, int y, t_mlx *mlx);
 int				draw_image(t_mlx *mlx);
 void			draw_pixel(t_mlx mlx, int x, int y, t_color color);

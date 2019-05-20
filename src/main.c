@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/16 16:24:27 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2019/05/20 17:39:12 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,16 @@ void	check_arguments(int argc, char **argv, t_mlx *mlx)
 		exit(1);
 	}
 	else if (argc > 1)
-		mlx->type = argv[1];
+	{
+		if (!ft_strcmp(argv[1], "mandelbrot"))
+			mlx->type = 0;
+		else if (!ft_strcmp(argv[1], "julia"))
+			mlx->type = 1;
+		else if (!ft_strcmp(argv[1], "lol"))
+			mlx->type = 2;
+	}
 	else
-		mlx->type = "mandelbrot";
+		mlx->type = 0;
 }
 
 int		main(int argc, char **argv)
@@ -46,13 +53,14 @@ int		main(int argc, char **argv)
 	t_mlx		mlx;
 	pthread_t	thread_id;
 
-	mlx = init();
 	// pthread_create(&thread_id, NULL, &draw_image, &mlx);
+	mlx = init();
 	check_arguments(argc, argv, &mlx);
-	printf("%s\n", mlx.type);
+	// printf("%s\n", mlx.type);
 	mlx_hook(mlx.window, 2, 1L << 2, &get_key, &mlx);
-	mlx_hook(mlx.window, 4, 1L << 2, &mouse_press, &mlx);
-	mlx_loop_hook(mlx.init, &draw_image, &mlx);
+	mlx_hook(mlx.window, 4, 1L << 4, &mouse_press, &mlx);
+	mlx_hook(mlx.window, 6, 1L << 6, &mouse_move, &mlx);
+	mlx_loop_hook(mlx.init, draw_image, &mlx);
 	mlx_loop(mlx.init);
 	return (0);
 }

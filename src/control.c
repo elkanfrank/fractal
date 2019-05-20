@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:57:26 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/15 15:38:33 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/20 17:38:44 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int		get_key(int key, t_mlx *mlx)
 
 int		mouse_press(int button, int x, int y, t_mlx *mlx)
 {
-	mlx->xPos = x;
-	mlx->yPos = y;
 	if (button == 5) // ZOOM OUT
 	{
 		mlx->xMove -= (mlx->zoom_add / 100) * WIDTH;
@@ -43,5 +41,12 @@ int		mouse_press(int button, int x, int y, t_mlx *mlx)
 		mlx->zoom -= 0.05 * mlx->zoom;
 		mlx->zoom_add ++;
 	}
+	return (0);
+}
+
+int		mouse_move(int x, int y, t_mlx *mlx)
+{
+	mlx->xPos = x;
+	mlx->yPos = y;
 	return (0);
 }
