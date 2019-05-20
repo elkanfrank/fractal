@@ -6,14 +6,14 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/20 17:39:12 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/20 18:30:07 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// TODO: Multi threading
-// TODO: last fractal
+// TODO: ship fractal
+// TODO: better zoom
 
 // BONUS
 // 	Colors
@@ -30,7 +30,7 @@ void	check_arguments(int argc, char **argv, t_mlx *mlx)
 		exit(1);
 	}
 	if (argc > 1 && ft_strcmp(argv[1], "julia")
-	&& ft_strcmp(argv[1], "mandelbrot") && ft_strcmp(argv[1], "mandelflop"))
+	&& ft_strcmp(argv[1], "mandelbrot") && ft_strcmp(argv[1], "ship"))
 	{
 		ft_putstr_fd("Invalid argument\n", 2);
 		exit(1);
@@ -41,7 +41,7 @@ void	check_arguments(int argc, char **argv, t_mlx *mlx)
 			mlx->type = 0;
 		else if (!ft_strcmp(argv[1], "julia"))
 			mlx->type = 1;
-		else if (!ft_strcmp(argv[1], "lol"))
+		else if (!ft_strcmp(argv[1], "ship"))
 			mlx->type = 2;
 	}
 	else

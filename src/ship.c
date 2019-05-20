@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   mandelflop.c                                       :+:    :+:            */
+/*   ship.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: elkanfrank <elkanfrank@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/16 15:14:03 by elkanfrank     #+#    #+#                */
-/*   Updated: 2019/05/16 16:24:01 by elkanfrank    ########   odam.nl         */
+/*   Updated: 2019/05/20 18:29:30 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		set_values(t_fractal *fractal, int x, int y, t_mlx mlx)
 	fractal->cb = fractal->b;
 }
 
-t_color			mandelflop(t_mlx mlx, int x, int y)
+t_color			ship(t_mlx mlx, int x, int y)
 {
 	double		n;
 	int			brightness;
@@ -34,13 +34,15 @@ t_color			mandelflop(t_mlx mlx, int x, int y)
 	n = 0;
 	while (n < MAX_ITER)
 	{
-		fractal.a_new = (fractal.a * fractal.a) - (fractal.b * fractal.b);
-		fractal.b = 2 * fractal.a * fractal.b + fractal.cb;
+		fractal.a_new = fabs((fractal.a * fractal.a) - (fractal.b * fractal.b));
+		fractal.b = fabs(2 * fractal.a * fractal.b + fractal.cb);
 		fractal.a = fractal.a_new + fractal.ca;
-		if (fabsl(fractal.a + fractal.b) > 2)
+		if (fabs(fractal.a + fractal.b) > 6)
 			break ;
 		n++;
 	}
-	n = n - log2(fabs(fractal.a * fractal.a + fractal.b * fractal.b)) + 3; // play with these parameters
+	if (n == MAX_ITER)
+		return (max_color());
+	n = n - log2(log2(fabs(fractal.a * fractal.a + fractal.b * fractal.b))) + 3;
 	return (set_color(n));
 }

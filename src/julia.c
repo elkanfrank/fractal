@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/23 13:54:47 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/20 17:57:04 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/20 17:59:42 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void		set_values(t_fractal *fractal, int x, int y, t_mlx mlx)
 	fractal->ca = fractal->a;
 	fractal->cb = fractal->b;
 }
-
 
 t_color		julia(t_mlx mlx, int x, int y)
 {

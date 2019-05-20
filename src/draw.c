@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:56:44 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/20 17:32:16 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/20 18:24:15 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void		*draw_thread(void *data)
 			draw_pixel(*mlx, x, mlx->start_y, mandelbrot(*mlx, x, mlx->start_y));
 		else if (mlx->type == JULIA)
 			draw_pixel(*mlx, x, mlx->start_y, julia(*mlx, x, mlx->start_y));
+		else if (mlx->type == SHIP)
+			draw_pixel(*mlx, x, mlx->start_y, ship(*mlx, x, mlx->start_y));
 		x++;
 		if (x == WIDTH)
 		{

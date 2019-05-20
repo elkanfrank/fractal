@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/19 17:57:26 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/20 17:38:44 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/20 18:31:03 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		mouse_press(int button, int x, int y, t_mlx *mlx)
 	{
 		mlx->xMove += (mlx->zoom_add / 100) * WIDTH;
 		mlx->zoom -= 0.05 * mlx->zoom;
-		mlx->zoom_add ++;
+		mlx->zoom_add++;
 	}
 	return (0);
 }

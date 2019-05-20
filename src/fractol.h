@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/20 17:43:30 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/20 18:24:11 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define MIN_COLOR 0xF05D5E
 # define MANDEL 0
 # define JULIA 1
-# define LOL 2
+# define SHIP 2
 
 typedef unsigned char	t_byte;
 
@@ -69,7 +69,7 @@ typedef struct	s_fractal {
 
 t_mlx			init(void);
 t_color			mandelbrot(t_mlx mlx, int x, int y);
-t_color			mandelflop(t_mlx mlx, int x, int y);
+t_color			ship(t_mlx mlx, int x, int y);
 t_color			julia(t_mlx mlx, int x, int y);
 t_color			set_color(double n);
 t_color			max_color(void);
