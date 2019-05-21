@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/21 15:21:08 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/21 15:22:32 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/21 18:20:34 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void		set_values(t_fractal *fractal, int x, int y, t_mlx mlx)
 {
-	double zoom_offset;
+	double range[2];
 
-	fractal->a = ft_map((double)x + mlx.xMove, 0, (double)WIDTH, -2, 2);
-	fractal->b = ft_map((double)y + mlx.yMove, 0, (double)HEIGHT, -2, 2);
-	// fractal->a *= mlx.zoom;
-	// fractal->b *= mlx.zoom;
+	range[0] = 0;
+	range[1] = WIDTH;
+	fractal->a = ft_map((double)x + mlx.xMove, range, -2, 2);
+	fractal->b = ft_map((double)y + mlx.yMove, range, -2, 2);
 	fractal->ca = fractal->a * mlx.zoom;
 	fractal->cb = fractal->b * mlx.zoom;
 }

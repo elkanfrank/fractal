@@ -6,14 +6,14 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/21 15:11:45 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/21 18:24:12 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// TODO: better zoom
-// TODO: Change ft_map (too many arguments)
+// TODO: Add fraclol argument
+// TODO: Add control to max iterations
 // TODO: Leaks + Norm
 
 // BONUS

@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/21 16:49:10 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/21 18:12:31 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_range {
 
 typedef struct	s_mlx {
 	int			type;
+	int			iterations;
 	int			line_size;
 	int			endian;
 	int			bits_per_pixel;
