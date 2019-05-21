@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/20 18:24:11 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/21 16:49:10 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1080
 # define HEIGHT 960
-# define MAX_ITER 80
+# define MAX_ITER 60
 # define THREADS 40
 # define MAX_COLOR 0x0F7173
 # define MIN_COLOR 0xF05D5E
@@ -37,6 +37,11 @@ typedef struct	s_color {
 	t_byte		green;
 	t_byte		blue;
 }				t_color;
+
+typedef struct	s_range {
+	double		start;
+	double		end;
+}				t_range;
 
 typedef struct	s_mlx {
 	int			type;
@@ -53,18 +58,18 @@ typedef struct	s_mlx {
 	int			end_y;
 	int			xPos;
 	int			yPos;
-	int			xMove;
-	int			yMove;
+	double		xMove;
+	double		yMove;
 }				t_mlx;
 
 typedef struct	s_fractal {
-	double	a;
-	double	b;
-	double	a_new;
-	double	b_new;
-	double	ca;
-	double	cb;
-	double	zoom;
+	double		a;
+	double		b;
+	double		a_new;
+	double		b_new;
+	double		ca;
+	double		cb;
+	double		zoom;
 }				t_fractal;
 
 t_mlx			init(void);
@@ -78,3 +83,4 @@ int				mouse_press(int button, int x, int y, t_mlx *mlx);
 int				mouse_move(int x, int y, t_mlx *mlx);
 int				draw_image(t_mlx *mlx);
 void			draw_pixel(t_mlx mlx, int x, int y, t_color color);
+void			check_arguments(int argc, char **argv, t_mlx *mlx);

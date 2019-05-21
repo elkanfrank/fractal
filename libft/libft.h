@@ -6,7 +6,7 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/07 18:08:46 by efrank         #+#    #+#                */
-/*   Updated: 2019/04/19 14:59:29 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/21 17:02:21 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void				ft_free_arrays(void **str);
 int					ft_printf(const char *string, ...);
 void				ft_put_unsigned(unsigned long long n);
 int					ft_intlen(long long n);
-double				ft_map(double n, double a, double b, double y, double z);
+double				ft_map(double n, double *range, double y, double z);
 
 
 #endif

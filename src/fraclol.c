@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   mandelbrot.c                                       :+:    :+:            */
+/*   fraclol.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/22 15:13:36 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/21 17:03:36 by efrank        ########   odam.nl         */
+/*   Created: 2019/05/21 15:21:08 by efrank         #+#    #+#                */
+/*   Updated: 2019/05/21 15:22:32 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 static void		set_values(t_fractal *fractal, int x, int y, t_mlx mlx)
 {
-	double range[2];
+	double zoom_offset;
 
-	range[0] = 0;
-	range[1] = WIDTH;
-	fractal->a = ft_map((double)x, range, -2, 2) * mlx.zoom; // + mlx.xMove
-	range[1] = HEIGHT;
-	fractal->b = ft_map((double)y, range, -2, 2) * mlx.zoom; // + mlx.yMove
-	fractal->ca = fractal->a;
-	fractal->cb = fractal->b;
+	fractal->a = ft_map((double)x + mlx.xMove, 0, (double)WIDTH, -2, 2);
+	fractal->b = ft_map((double)y + mlx.yMove, 0, (double)HEIGHT, -2, 2);
+	// fractal->a *= mlx.zoom;
+	// fractal->b *= mlx.zoom;
+	fractal->ca = fractal->a * mlx.zoom;
+	fractal->cb = fractal->b * mlx.zoom;
 }
 
-t_color			mandelbrot(t_mlx mlx, int x, int y)
+t_color		fraclol(t_mlx mlx, int x, int y)
 {
 	double		n;
 	t_fractal	fractal;
