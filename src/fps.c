@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   init.c                                             :+:    :+:            */
+/*   fps.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/19 17:56:42 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/22 15:00:28 by efrank        ########   odam.nl         */
+/*   Created: 2019/05/22 13:51:13 by efrank         #+#    #+#                */
+/*   Updated: 2019/05/22 14:25:34 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <time.h>
 
-t_mlx	init(void)
+static int	seconds(void)
 {
-	t_mlx mlx;
+	time_t		now;
+	struct tm	*tijd;
 
-	mlx.init = mlx_init();
-	mlx.window = mlx_new_window(mlx.init, WIDTH, HEIGHT, "fractol");
-	mlx.image = mlx_new_image(mlx.init, WIDTH, HEIGHT);
-	mlx.zoom = 1;
-	mlx.iterations = 60;
-	mlx.zoom_add = 1;
-	mlx.x_pos = 0;
-	mlx.y_pos = 0;
-	mlx.pixel_addr = mlx_get_data_addr(mlx.image, &(mlx.bits_per_pixel),
-	&(mlx.line_size), &(mlx.endian));
-	return (mlx);
+	now = time(0);
+	tijd = localtime(&now);
+	return (tijd->tm_sec);
+}
+
+int			frames(void)
+{
+	static int	frames;
+	static int	prev_sec;
+	static int	fps;
+	int			cur_sec;
+
+	frames++;
+	cur_sec = seconds();
+	if (cur_sec != prev_sec)
+	{
+		prev_sec = cur_sec;
+		fps = frames;
+		frames = 0;
+		return (fps);
+	}
+	return (fps);
 }

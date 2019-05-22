@@ -6,22 +6,11 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:29:16 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/21 18:24:12 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/22 14:57:05 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-// TODO: Add fraclol argument
-// TODO: Add control to max iterations
-// TODO: Leaks + Norm
-
-// BONUS
-// 	Colors
-//	Move around
-//	x
-// 	x
-//	x
 
 int		main(int argc, char **argv)
 {

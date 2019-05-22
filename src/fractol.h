@@ -6,9 +6,12 @@
 /*   By: efrank <efrank@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 15:30:06 by efrank         #+#    #+#                */
-/*   Updated: 2019/05/21 18:12:31 by efrank        ########   odam.nl         */
+/*   Updated: 2019/05/22 15:00:10 by efrank        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 # include "../libft/libft.h"
 # include "../minilibx_macos/mlx.h"
@@ -22,13 +25,12 @@
 
 # define WIDTH 1080
 # define HEIGHT 960
-# define MAX_ITER 60
-# define THREADS 40
+# define THREADS 15
 # define MAX_COLOR 0x0F7173
-# define MIN_COLOR 0xF05D5E
 # define MANDEL 0
 # define JULIA 1
 # define SHIP 2
+# define FRACLOL 3
 
 typedef unsigned char	t_byte;
 
@@ -57,10 +59,10 @@ typedef struct	s_mlx {
 	char		*pixel_addr;
 	int			start_y;
 	int			end_y;
-	int			xPos;
-	int			yPos;
-	double		xMove;
-	double		yMove;
+	int			x_pos;
+	int			y_pos;
+	double		x_move;
+	double		y_move;
 }				t_mlx;
 
 typedef struct	s_fractal {
@@ -74,10 +76,11 @@ typedef struct	s_fractal {
 }				t_fractal;
 
 t_mlx			init(void);
-t_color			mandelbrot(t_mlx mlx, int x, int y);
-t_color			ship(t_mlx mlx, int x, int y);
-t_color			julia(t_mlx mlx, int x, int y);
-t_color			set_color(double n);
+t_color			mandelbrot(t_mlx *mlx, int x, int y);
+t_color			ship(t_mlx *mlx, int x, int y);
+t_color			julia(t_mlx *mlx, int x, int y);
+t_color			fraclol(t_mlx *mlx, int x, int y);
+t_color			set_color(double n, int max);
 t_color			max_color(void);
 int				get_key(int key, t_mlx *mlx);
 int				mouse_press(int button, int x, int y, t_mlx *mlx);
@@ -85,3 +88,6 @@ int				mouse_move(int x, int y, t_mlx *mlx);
 int				draw_image(t_mlx *mlx);
 void			draw_pixel(t_mlx mlx, int x, int y, t_color color);
 void			check_arguments(int argc, char **argv, t_mlx *mlx);
+int				frames(void);
+
+#endif
